@@ -28,8 +28,8 @@ I would like to be able to view a bank statement
 * Transaction logs are created upon creation of the account via dependancy injection.
 * From these requirements each user story was built up via TDD
 * Once each story was completed it was tested in IRB
-* Errors were then added to prevent negative values being entered into the functions and withdraws for money which was not in the account.
-* These were introduced in the account class as the transaction logs are only interacted with through the account class.
+* Errors were then added to prevent negative values being entered into the functions and withdrawals for money which was not in the account.
+* These were introduced in the account class as the transaction logs are dependant on the account class.
 
 ## Quickstart
 
@@ -68,3 +68,4 @@ date || credit || debit || balance
 13/01/2012 || 2000.00 || || 3000.00
 10/01/2012 || 1000.00 || || 1000.00
 ```
+
