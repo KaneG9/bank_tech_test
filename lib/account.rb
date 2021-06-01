@@ -20,7 +20,7 @@ class Account
 
   def view_statement
     statement = "date || credit || debit || balance\n"
-    transactions = @transaction_log.log.each do |transaction|
+    @transaction_log.log.each do |transaction|
       statement += transaction.join(" || ") + "\n"
     end
     return statement.strip
