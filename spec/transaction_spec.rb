@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'transaction'
 
 describe Transaction do
@@ -18,5 +20,4 @@ describe Transaction do
       expect(subject.new_balance).to eq 0
     end
   end
-  
 end

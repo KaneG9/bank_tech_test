@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'date'
-require_relative 'transaction.rb'
+require_relative 'transaction'
 
 class TransactionLog
   attr_reader :log
@@ -9,7 +9,7 @@ class TransactionLog
   DEFAULT_AMOUNT = '0.00'
 
   def initialize(transaction = Transaction)
-    @log = [] 
+    @log = []
     @transaction = transaction
   end
 

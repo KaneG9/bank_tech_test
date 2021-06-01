@@ -4,7 +4,7 @@ require 'transaction_log'
 describe TransactionLog do
   let(:transaction_double) { double :transaction }
   subject { TransactionLog.new(transaction_double) }
-  
+
   before do
     allow(transaction_double).to receive(:new).and_return(transaction_double)
   end

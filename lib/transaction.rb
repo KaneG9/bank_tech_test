@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require 'date'
 
 class Transaction
-
   attr_reader :date, :credit, :debit, :new_balance
 
   DEFAULT_TRANSACTION_VALUE = 0
