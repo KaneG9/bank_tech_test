@@ -46,12 +46,12 @@ describe Account do
       subject.withdraw(10)
     end
 
-    xit 'cannot add negative money' do
-
+    it 'cannot add negative money' do
+      expect { subject.withdraw(-5) }.to raise_error("You cannot withdraw a negative value.")
     end
 
-    xit "cannot withdraw more money than you have" do
-      
+    it "cannot withdraw more money than you have" do
+      expect { subject.withdraw(5) }.to raise_error("You do not have enough money to withdraw this amount.")
     end
   end
 
