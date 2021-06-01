@@ -3,18 +3,19 @@ require 'account'
 describe Account do
   let(:transaction_log_double ) { double :transaction_log } 
   subject { Account.new(Account::DEFAULT_BALANCE, transaction_log_double)}
+  
+  before do
+    allow(transaction_log_double).to receive(:deposit)
+    allow(transaction_log_double).to receive(:withdraw)
+  end
 
-  describe "#balance" do
-    it 'can show the balance' do
+  describe "#initialize" do
+    it 'account balance defaults to 0' do
       expect(subject.balance).to eq 0
     end
   end
 
   describe "#deposit" do
-    before do
-      allow(transaction_log_double).to receive(:deposit)
-    end
-
     it 'can add money to the account' do
       expect { subject.deposit(10) }.to change { subject.balance }.by 10
     end
@@ -30,11 +31,6 @@ describe Account do
   end
 
   describe "#withdraw" do
-    before do
-      allow(transaction_log_double).to receive(:deposit)
-      allow(transaction_log_double).to receive(:withdraw)
-    end
-
     it 'can removes money to the account' do
       subject.deposit 20
       expect { subject.withdraw(10) }.to change { subject.balance }.by -10
@@ -56,11 +52,6 @@ describe Account do
   end
 
   describe "#view_statement" do
-    before do
-      allow(transaction_log_double).to receive(:deposit)
-      allow(transaction_log_double).to receive(:withdraw)
-    end
-    
     it "prints a statement" do
       allow(transaction_log_double).to receive(:log).and_return([[Date.today, "50.00", "0.00", "50.00"],[Date.today, "0.00", "20.00", "30.00"],[Date.today, "0.00", "5.00", "25.00"]])
       subject.deposit 50

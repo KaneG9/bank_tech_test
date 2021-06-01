@@ -3,6 +3,7 @@ require_relative 'transaction_log'
 class Account
   attr_reader :balance
   DEFAULT_BALANCE = 0
+  
   def initialize(balance = DEFAULT_BALANCE, transaction_log = TransactionLog.new)
     @balance = balance
     @transaction_log = transaction_log
