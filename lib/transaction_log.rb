@@ -1,21 +1,23 @@
 # frozen_string_literal: true
 
 require 'date'
+require_relative 'transaction.rb'
 
 class TransactionLog
   attr_reader :log
 
   DEFAULT_AMOUNT = '0.00'
 
-  def initialize
-    @log = [] # contains each transaction in the form [Date, Credit amount, Debit amount, New balance]
+  def initialize(transaction = Transaction)
+    @log = [] 
+    @transaction = transaction
   end
 
   def deposit(amount, new_balance)
-    @log << [Date.today, format('%.2f', amount), DEFAULT_AMOUNT, format('%.2f', new_balance)]
+    @log << @transaction.new(credit: amount, new_balance: new_balance)
   end
 
   def withdraw(amount, new_balance)
-    @log << [Date.today, DEFAULT_AMOUNT, format('%.2f', amount), format('%.2f', new_balance)]
+    @log << @transaction.new(debit: amount, new_balance: new_balance)
   end
 end

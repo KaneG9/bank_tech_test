@@ -1,0 +1,22 @@
+require 'transaction'
+
+describe Transaction do
+  describe '#initialize' do
+    it 'is created with todays date' do
+      expect(subject.date).to eq Date.today
+    end
+
+    it 'has a default credit amount of 0' do
+      expect(subject.credit).to eq 0
+    end
+
+    it 'has a default debit amount of 0' do
+      expect(subject.debit).to eq 0
+    end
+
+    it 'default new balance is 0' do
+      expect(subject.new_balance).to eq 0
+    end
+  end
+  
+end

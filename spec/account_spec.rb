@@ -54,14 +54,10 @@ describe Account do
   end
 
   describe '#view_statement' do
-    it 'prints a statement' do
-      allow(transaction_log_double).to receive(:log).and_return([[Date.today, '50.00', '0.00', '50.00'],
-                                                                 [Date.today, '0.00', '20.00', '30.00'],
-                                                                 [Date.today, '0.00', '5.00', '25.00']])
-      subject.deposit 50
-      subject.withdraw 20
-      subject.withdraw 5
-      expect(subject.view_statement).to eq("date || credit || debit || balance\n#{Date.today} || 0.00 || 5.00 || 25.00\n#{Date.today} || 0.00 || 20.00 || 30.00\n#{Date.today} || 50.00 || 0.00 || 50.00")
+    it 'retrieves the log from the transaction log' do
+      allow(transaction_log_double).to receive(:log).and_return []
+      expect(transaction_log_double).to receive(:log)
+      subject.view_statement
     end
   end
 end
