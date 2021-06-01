@@ -25,6 +25,7 @@ I would like to be able to view a bank statement
 | TransactionLogs | deposit        | @logs     |
 |                 | withdraw       |           |
 
+* Transaction logs are created upon creation of the account via dependancy injection.
 * From these requirements each user story was built up via TDD
 * Once each story was completed it was tested in IRB
 * Errors were then added to prevent negative values being entered into the functions and withdraws for money which was not in the account.
@@ -39,3 +40,7 @@ I would like to be able to view a bank statement
 > rspec #run tests
 > irb -r './lib/account.rb' #run program in irb
 ```
+
+## Notes
+* Amounts are stored in the transaction logs as strings in order to maintain correct formatting
+* Considered separating the logs for withdrawal and deposit so that you did not have to record the default value (0.00). This would mean an extra set would be required to generate the statement in the correct order.
