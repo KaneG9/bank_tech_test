@@ -29,7 +29,7 @@ I would like to be able to view a bank statement
 * From these requirements each user story was built up via TDD
 * Once each story was completed it was tested in IRB
 * Errors were then added to prevent negative values being entered into the functions and withdrawals for money which was not in the account.
-* These were introduced in the account class as the transaction logs are only interacted with through the account class.
+* These were introduced in the account class as the transaction logs are dependant on the account class.
 
 ## Quickstart
 
