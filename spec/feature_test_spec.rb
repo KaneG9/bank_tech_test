@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'account'
 
-describe "feature test" do
+describe 'feature test' do
   subject { Account.new }
 
   it 'returns correct statement for given set of transactions' do
