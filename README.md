@@ -1,5 +1,9 @@
 # Bank tech test
 
+## Introduction
+* This program was created as practice for tech tests and focuses on creating readable, clean code with well formulated tests.
+* Each user story was built up via TDD
+* Once each story was completed it was tested in IRB 
 ## Approach
 * The initial requirements were broken down into users stories:
 ```
@@ -24,10 +28,13 @@ I would like to be able to view a bank statement
 |                 | view_statement |           |
 | TransactionLogs | deposit        | @logs     |
 |                 | withdraw       |           |
+| Transaction     |                | @date     |
+|                 |                | @credit   |
+|                 |                | @debit    |
+|                 |                | @new_balance|
 
 * Transaction logs are created upon creation of the account via dependancy injection.
-* From these requirements each user story was built up via TDD
-* Once each story was completed it was tested in IRB
+* Transactions are created each time a deposit or withdrawal is made  and stored in the transaction logs.
 * Errors were then added to prevent negative values being entered into the functions and withdrawals for money which was not in the account.
 * These were introduced in the account class as the transaction logs are dependant on the account class.
 
@@ -40,10 +47,6 @@ I would like to be able to view a bank statement
 > rspec #run tests
 > irb -r './lib/account.rb' #run program in irb
 ```
-
-## Notes
-* Amounts are stored in the transaction logs as strings in order to maintain correct formatting
-* Considered separating the logs for withdrawal and deposit so that you did not have to record the default value (0.00). This would mean an extra set would be required to generate the statement in the correct order.
 
 ## Specification
 

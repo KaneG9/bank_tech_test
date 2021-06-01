@@ -30,8 +30,14 @@ class Account
   def view_statement
     statement = "date || credit || debit || balance\n"
     @transaction_log.log.reverse.each do |transaction|
-      statement += "#{transaction.join(' || ')}\n"
+      statement += "#{transaction.date} || #{format_data(transaction.credit)} || #{format_data(transaction.debit)} || #{format_data(transaction.new_balance)}\n"
     end
     statement.strip
+  end
+
+  private
+
+  def format_data(data)
+    format('%.2f', data)
   end
 end

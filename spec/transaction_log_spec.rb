@@ -2,17 +2,34 @@
 
 require 'transaction_log'
 describe TransactionLog do
+  let(:transaction_double) { double :transaction }
+  subject { TransactionLog.new(transaction_double) }
+
+  before do
+    allow(transaction_double).to receive(:new).and_return(transaction_double)
+  end
+
   describe '#deposit' do
-    it 'adds an entry to the log' do
+    it 'creates a new transaction' do
+      expect(transaction_double).to receive(:new)
       subject.deposit(10, 10)
-      expect(subject.log[0]).to eq [Date.today, '10.00', '0.00', '10.00']
+    end
+
+    it 'adds new transaction to log' do
+      subject.deposit(10, 10)
+      expect(subject.log[0]).to eq transaction_double
     end
   end
 
   describe '#withdraw' do
-    it 'adds an entry to the log' do
-      subject.withdraw(20, 0)
-      expect(subject.log[0]).to eq [Date.today, '0.00', '20.00', '0.00']
+    it 'creates a new transaction' do
+      expect(transaction_double).to receive(:new)
+      subject.withdraw(10, 10)
+    end
+
+    it 'adds new transaction to log' do
+      subject.withdraw(10, 10)
+      expect(subject.log[0]).to eq transaction_double
     end
   end
 end
