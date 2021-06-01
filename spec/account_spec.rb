@@ -24,8 +24,8 @@ describe Account do
       subject.deposit(10)
     end
 
-    xit 'cannot add negative money' do
-
+    it 'cannot add negative money' do
+      expect { subject.deposit(-5) }.to raise_error("You cannot deposit a negative value.")
     end
   end
 

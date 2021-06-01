@@ -9,6 +9,7 @@ class Account
   end
 
   def deposit(amount)
+    raise "You cannot deposit a negative value." if amount < 0
     @balance += amount
     @transaction_log.deposit(amount, @balance)
   end
