@@ -57,7 +57,7 @@ describe Account do
       subject.deposit 50
       subject.withdraw 20
       subject.withdraw 5
-      expect(subject.view_statement).to eq("date || credit || debit || balance\n#{Date.today} || 50.00 || 0.00 || 50.00\n#{Date.today} || 0.00 || 20.00 || 30.00\n#{Date.today} || 0.00 || 5.00 || 25.00")      
+      expect(subject.view_statement).to eq("date || credit || debit || balance\n#{Date.today} || 0.00 || 5.00 || 25.00\n#{Date.today} || 0.00 || 20.00 || 30.00\n#{Date.today} || 50.00 || 0.00 || 50.00")      
     end
   end
 end
