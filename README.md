@@ -28,7 +28,7 @@ I would like to be able to view a bank statement
 * Transaction logs are created upon creation of the account via dependancy injection.
 * From these requirements each user story was built up via TDD
 * Once each story was completed it was tested in IRB
-* Errors were then added to prevent negative values being entered into the functions and withdraws for money which was not in the account.
+* Errors were then added to prevent negative values being entered into the functions and withdrawals for money which was not in the account.
 * These were introduced in the account class as the transaction logs are only interacted with through the account class.
 
 ## Quickstart
