@@ -6,8 +6,6 @@ require_relative 'transaction'
 class TransactionLog
   attr_reader :log
 
-  DEFAULT_BALANCE = 0
-
   def initialize(transaction_class = Transaction)
     @log = []
     @transaction_class = transaction_class
@@ -19,15 +17,5 @@ class TransactionLog
 
   def withdraw(amount)
     @log << @transaction_class.new(debit: amount)
-  end
-
-  def current_balance 
-    if @log.empty?
-      DEFAULT_BALANCE
-    else
-      @log.reduce(0) do |sum, transaction|
-        sum + transaction.credit - transaction.debit
-      end
-    end
   end
 end

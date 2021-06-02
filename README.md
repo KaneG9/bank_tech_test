@@ -26,13 +26,12 @@ I would like to be able to view a bank statement
 |-----------------|----------------|-----------|
 | Account         | deposit        | @balance  |
 |                 | withdraw       |           |
-|                 | view_statement |           |
 | TransactionLogs | deposit        | @logs     |
 |                 | withdraw       |           |
 | Transaction     |                | @date     |
 |                 |                | @credit   |
 |                 |                | @debit    |
-|                 |                | @new_balance|
+|Printer          | view_statement |           |
 
 * Transaction logs are created upon creation of the account via dependancy injection.
 * Transactions are created each time a deposit or withdrawal is made  and stored in the transaction logs.

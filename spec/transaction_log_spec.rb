@@ -39,10 +39,4 @@ describe TransactionLog do
       expect(subject.log[1]).to eq transaction_double
     end
   end
-
-  describe '#current balance' do
-    it 'if no transactions are stored current balance = 0' do
-      expect(subject.current_balance).to eq 0
-    end
-  end
 end
