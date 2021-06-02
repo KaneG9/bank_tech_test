@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class Printer
-
   STATEMENT_HEADER = "date || credit || debit || balance\n"
 
   def self.view_statement(transaction_log)
