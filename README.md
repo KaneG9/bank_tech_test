@@ -26,6 +26,7 @@ I would like to be able to view a bank statement
 |-----------------|----------------|-----------|
 | Account         | deposit        | @balance  |
 |                 | withdraw       |           |
+|                 | view_statement |           |
 | TransactionLogs | deposit        | @logs     |
 |                 | withdraw       |           |
 | Transaction     |                | @date     |
@@ -33,10 +34,11 @@ I would like to be able to view a bank statement
 |                 |                | @debit    |
 |Printer          | view_statement |           |
 
-* Transaction logs are created upon creation of the account via dependancy injection.
-* Transactions are created each time a deposit or withdrawal is made  and stored in the transaction logs.
-* Errors were then added to prevent negative values being entered into the functions and withdrawals for money which was not in the account.
-* These were introduced in the account class as the transaction logs are dependant on the account class.
+* Transaction logs are created upon creation of the `Account` via dependancy injection.
+* A `Transaction` is created each time a deposit or withdrawal is made and stored in the `TransactionLog`.
+* When a call is made to the `Account` to view the statement, view statement is called in the `Printer`.
+* Errors were then added to prevent negative values being entered into the functions and withdrawals for which the account has insufficient funds.
+* These were introduced in the `Account` class as the transaction logs are dependant on the `Account` class.
 
 ## Quickstart
 
@@ -48,6 +50,9 @@ I would like to be able to view a bank statement
 > irb -r './lib/account.rb' #run program in irb
 ```
 
+
+## Notes
+* The current balance private method is called whenever a withdrawal is made to prevent overdrafts. This is likely not the most efficient way to do this however it keeps the code clean and prevents duplications of the balance value from being stored.
 ## Specification
 
 ### Requirements
