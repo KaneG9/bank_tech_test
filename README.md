@@ -4,6 +4,7 @@
 * This program was created as practice for tech tests and focuses on creating readable, clean code with well formulated tests.
 * Each user story was built up via TDD
 * Once each story was completed it was tested in IRB 
+* The program acts as a banking app in which the user can deposit and withdraw money as well as view a statement of thier transactions.
 ## Approach
 * The initial requirements were broken down into users stories:
 ```
