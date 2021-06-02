@@ -27,6 +27,7 @@ describe Account do
 
   describe '#withdraw' do
     it 'adds the transaction to the log' do
+      allow(transaction_log_double).to receive(:current_balance).and_return 10
       expect(transaction_log_double).to receive(:withdraw)
       subject.deposit(10)
       subject.withdraw(10)
@@ -34,6 +35,12 @@ describe Account do
 
     it 'cannot add negative money' do
       expect { subject.withdraw(-5) }.to raise_error('You cannot withdraw a negative value.')
+    end
+
+    it 'cannot withdraw more money than you have' do
+      allow(transaction_log_double).to receive(:current_balance).and_return 0
+
+      expect { subject.withdraw(5) }.to raise_error('You do not have enough money to withdraw this amount.')
     end
   end
 

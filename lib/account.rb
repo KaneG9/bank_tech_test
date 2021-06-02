@@ -18,6 +18,7 @@ class Account
 
   def withdraw(amount)
     raise 'You cannot withdraw a negative value.' if amount.negative?
+    raise 'You do not have enough money to withdraw this amount.' if amount > @transaction_log.current_balance
 
     @transaction_log.withdraw(amount)
   end

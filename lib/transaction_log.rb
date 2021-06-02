@@ -12,17 +12,20 @@ class TransactionLog
   end
 
   def deposit(amount)
-    @log << @transaction_class.new(credit: amount, old_balance: current_balance)
+    @log << @transaction_class.new(credit: amount)
   end
 
   def withdraw(amount)
-    raise 'You do not have enough money to withdraw this amount.' if amount > current_balance
-
-    new_balance = current_balance - amount
-    @log << @transaction_class.new(debit: amount, old_balance: current_balance)
+    @log << @transaction_class.new(debit: amount)
   end
 
   def current_balance 
-    @log.last ? @log.last.balance : 0
+    if @log.empty?
+      0
+    else
+      @log.reduce(0) do |sum, transaction|
+        sum + transaction.credit - transaction.debit
+      end
+    end
   end
 end
