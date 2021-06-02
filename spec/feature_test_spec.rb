@@ -5,7 +5,6 @@ require 'account'
 describe 'feature test' do
   subject { Account.new }
 
-
   it 'returns correct statement for given set of transactions' do
     allow(Date).to receive(:today).and_return("25/12/2021")
     subject.deposit 1000
