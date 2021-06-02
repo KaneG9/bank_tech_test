@@ -15,7 +15,6 @@ describe Account do
   end
 
   describe '#deposit' do
-
     it 'adds the transaction to the log' do
       expect(transaction_log_double).to receive(:deposit)
       subject.deposit(10)

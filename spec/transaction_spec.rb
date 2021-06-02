@@ -3,7 +3,6 @@
 require 'transaction'
 
 describe Transaction do
-
   subject { Transaction.new }
 
   describe '#initialize' do

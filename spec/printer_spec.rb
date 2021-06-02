@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 describe Printer do
   let(:transaction_mock_one) { double :transaction, credit: 1000, debit: 0, date: '20/12/2021' }
   let(:transaction_mock_two) { double :transaction, credit: 2000, debit: 0, date: '21/12/2021' }
-  let(:transaction_mock_three) { double :transaction, credit: 0, debit: 1500, date: "25/12/2021" }
-  
+  let(:transaction_mock_three) { double :transaction, credit: 0, debit: 1500, date: '25/12/2021' }
+
   describe '#view_statement' do
     it 'prints the correct statement for given transactions' do
       data = [transaction_mock_one, transaction_mock_two, transaction_mock_three]
@@ -10,4 +12,3 @@ describe Printer do
     end
   end
 end
-
