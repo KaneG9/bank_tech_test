@@ -34,9 +34,7 @@ class Account
     if @transaction_log.log.empty?
       EMPTY_ACCOUNT_BALANCE
     else
-      @transaction_log.log.reduce(0) do |sum, transaction|
-        sum + transaction.credit - transaction.debit
-      end
+      @transaction_log.log.reduce(0) { |sum, transaction| sum + transaction.credit - transaction.debit }
     end
   end
 end
