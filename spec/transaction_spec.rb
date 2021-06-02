@@ -4,7 +4,7 @@ require 'transaction'
 
 describe Transaction do
 
-  subject { Transaction.new(balance: 0) }
+  subject { Transaction.new(old_balance: 0) }
 
   describe '#initialize' do
     it 'is created with todays date' do
@@ -20,7 +20,7 @@ describe Transaction do
     end
 
     it 'calculated the balance based upon the transaction' do
-      example_transaction = Transaction.new(balance: 5, debit: 2)
+      example_transaction = Transaction.new(old_balance: 5, debit: 2)
       expect(example_transaction.balance).to eq 3
     end
   end
