@@ -4,11 +4,13 @@ require 'account'
 
 describe Account do
   let(:transaction_log_double) { double :transaction_log }
-  subject { Account.new(transaction_log_double) }
+  let(:printer_double) { double :printer }
+  subject { Account.new(printer_class: printer_double, transaction_log: transaction_log_double) }
 
   before do
     allow(transaction_log_double).to receive(:deposit)
     allow(transaction_log_double).to receive(:withdraw)
+    allow(printer_double).to receive(:view_statement)
   end
 
   describe '#deposit' do
@@ -36,9 +38,17 @@ describe Account do
   end
 
   describe '#view_statement' do
+    before do
+      allow(transaction_log_double).to receive(:log)
+    end
+
     it 'retrieves the log from the transaction log' do
-      allow(transaction_log_double).to receive(:log).and_return []
       expect(transaction_log_double).to receive(:log)
+      subject.view_statement
+    end
+
+    it 'calls the printer to print the statement' do
+      expect(printer_double).to receive(:view_statement)
       subject.view_statement
     end
   end

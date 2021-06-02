@@ -5,8 +5,9 @@ require_relative 'printer'
 
 class Account
 
-  def initialize(transaction_log = TransactionLog.new)
+  def initialize(transaction_log: TransactionLog.new, printer_class: Printer )
     @transaction_log = transaction_log
+    @printer_class = printer_class
   end
 
   def deposit(amount)
@@ -22,7 +23,7 @@ class Account
   end
 
   def view_statement
-    Printer.view_statement(@transaction_log.log)
+    @printer_class.view_statement(@transaction_log.log)
   end
 
   
