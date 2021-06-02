@@ -3,6 +3,9 @@
 require 'transaction'
 
 describe Transaction do
+
+  subject { Transaction.new(balance: 0) }
+
   describe '#initialize' do
     it 'is created with todays date' do
       expect(subject.date).to eq Date.today
@@ -16,8 +19,9 @@ describe Transaction do
       expect(subject.debit).to eq 0
     end
 
-    it 'default new balance is 0' do
-      expect(subject.new_balance).to eq 0
+    it 'calculated the balance based upon the transaction' do
+      example_transaction = Transaction.new(balance: 5, debit: 2)
+      expect(example_transaction.balance).to eq 3
     end
   end
 end

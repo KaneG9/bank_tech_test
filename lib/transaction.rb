@@ -3,15 +3,15 @@
 require 'date'
 
 class Transaction
-  attr_reader :date, :credit, :debit, :new_balance
+  attr_reader :date, :credit, :debit, :balance
 
   DEFAULT_TRANSACTION_VALUE = 0
   DEFAULT_BALANCE = 0
 
-  def initialize(date: Date.today, credit: DEFAULT_TRANSACTION_VALUE, debit: DEFAULT_TRANSACTION_VALUE, new_balance: DEFAULT_BALANCE)
+  def initialize(date: Date.today, credit: DEFAULT_TRANSACTION_VALUE, debit: DEFAULT_TRANSACTION_VALUE, balance:)
     @date = date
     @credit = credit
     @debit = debit
-    @new_balance = new_balance
+    @balance = balance + credit - debit
   end
 end

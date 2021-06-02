@@ -6,18 +6,23 @@ require_relative 'transaction'
 class TransactionLog
   attr_reader :log
 
-  DEFAULT_AMOUNT = '0.00'
-
-  def initialize(transaction = Transaction)
+  def initialize(transaction_class = Transaction)
     @log = []
-    @transaction = transaction
+    @transaction_class = transaction_class
   end
 
-  def deposit(amount, new_balance)
-    @log << @transaction.new(credit: amount, new_balance: new_balance)
+  def deposit(amount)
+    @log << @transaction_class.new(credit: amount, balance: current_balance)
   end
 
-  def withdraw(amount, new_balance)
-    @log << @transaction.new(debit: amount, new_balance: new_balance)
+  def withdraw(amount)
+    raise 'You do not have enough money to withdraw this amount.' if amount > current_balance
+
+    new_balance = current_balance - amount
+    @log << @transaction_class.new(debit: amount, balance: current_balance)
+  end
+
+  def current_balance 
+    @log.last ? @log.last.balance : 0
   end
 end
