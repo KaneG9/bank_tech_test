@@ -13,6 +13,7 @@ class Printer
   private
 
   def self.format_data(data)
+    return '' if data == 0
     format('%.2f', data)
   end
 end
