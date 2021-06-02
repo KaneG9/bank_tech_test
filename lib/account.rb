@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'transaction_log'
+require_relative 'printer'
 
 class Account
   attr_reader :balance
@@ -28,16 +29,8 @@ class Account
   end
 
   def view_statement
-    statement = "date || credit || debit || balance\n"
-    @transaction_log.log.reverse.each do |transaction|
-      statement += "#{transaction.date} || #{format_data(transaction.credit)} || #{format_data(transaction.debit)} || #{format_data(transaction.new_balance)}\n"
-    end
-    statement.strip
+    Printer.view_statement(@transaction_log.log)
   end
 
-  private
-
-  def format_data(data)
-    format('%.2f', data)
-  end
+  
 end
